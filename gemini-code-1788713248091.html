@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>David Eagle | Jazz Vocalist & Big Band Crooner</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            midnight: '#0b101a',
+            slateGold: '#d4af37',
+            warmGold: '#e6ca65',
+            navyCard: '#131b2e',
+            softMuted: '#94a3b8'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          backgroundImage: {
+            'stars': 'radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0))'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Animations & UI Enhancements */
+    .star-bg {
+      background-image: 
+        radial-gradient(1.5px 1.5px at 10% 20%, rgba(212, 175, 55, 0.4), transparent),
+        radial-gradient(2px 2px at 30% 60%, rgba(255, 255, 255, 0.3), transparent),
+        radial-gradient(1px 1px at 70% 30%, rgba(212, 175, 55, 0.5), transparent),
+        radial-gradient(1.5px 1.5px at 90% 80%, rgba(255, 255, 255, 0.2), transparent),
+        radial-gradient(2px 2px at 50% 10%, rgba(212, 175, 55, 0.3), transparent);
+      background-size: 150px 150px;
+    }
+    
+    .gold-glow {
+      box-shadow: 0 0 40px -10px rgba(212, 175, 55, 0.3);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+  </style>
+</head>
+<body class="bg-midnight text-slate-100 font-sans antialiased selection:bg-slateGold selection:text-midnight">
+
+  <header class="fixed top-0 left-0 right-0 z-50 bg-midnight/90 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+    <div class="max-w-[1600px] mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#home" class="text-2xl font-serif tracking-widest text-white group">
+        DAVID EAGLE
+      </a>
+      
+      <nav class="hidden md:flex items-center space-x-8 text-sm text-white">
+        <a href="#about" class="hover:text-slateGold transition-colors duration-300">About</a>
+        <a href="#repertoire" class="hover:text-slateGold transition-colors duration-300">Repertoire</a>
+        <a href="#shows" class="hover:text-slateGold transition-colors duration-300">Live Dates</a>
+        <a href="#media" class="hover:text-slateGold transition-colors duration-300">Media Gallery</a>
+        <a href="#contact" class="px-6 py-2 rounded bg-slateGold text-midnight hover:bg-warmGold transition-all font-medium">Bookings</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-[1600px] mx-auto pt-20 flex flex-col lg:flex-row min-h-screen">
+    
+    <div class="w-full lg:w-1/2 lg:border-r border-slateGold/20 px-6 lg:px-12 py-16 relative">
+      <div class="absolute inset-0 star-bg opacity-70 pointer-events-none"></div>
+
+      <div id="home" class="relative z-10 text-center mb-24 reveal">
+        <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-slateGold font-semibold mb-4 block">
+          Munich-Based Vocalist :: Elegant Crooner :: Big Band Ensemble
+        </span>
+        <h1 class="text-5xl md:text-6xl font-serif text-white mb-8 leading-tight tracking-wide">
+          The Voice of the Modern <br /> American Songbook
+        </h1>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#contact" class="px-6 py-3 bg-slateGold text-midnight font-medium rounded hover:bg-warmGold transition-all text-sm">
+            Inquire for Private Events & Festivals
+          </a>
+          <a href="#repertoire" class="px-6 py-3 border border-white/20 text-white rounded hover:border-slateGold hover:text-slateGold transition-all text-sm">
+            Listen to Demos
+          </a>
+        </div>
+      </div>
+
+      <div id="about" class="relative z-10 mb-24 reveal delay-100">
+        <h2 class="text-2xl font-serif text-slateGold mb-8 uppercase tracking-widest">About</h2>
+        
+        <div class="flex flex-col xl:flex-row gap-8 items-start">
+          <div class="w-full xl:w-2/5 flex-shrink-0">
+            <div class="rounded-xl overflow-hidden border-2 border-slateGold/40 gold-glow relative aspect-[4/5]">
+              <img 
+                src="ChatGPT Image Sep 6, 2026 at 01_15_03 PM.jpg" 
+                alt="David Eagle Portrait" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
+          <div class="w-full xl:w-3/5 space-y-4">
+            <span class="text-[10px] uppercase tracking-widest text-slateGold font-semibold block">Biography :: The Sound & Presence</span>
+            <h3 class="text-2xl font-serif text-white leading-snug">
+              Classic American Songbook Elegance with an Electric Contemporary Edge
+            </h3>
+            <p class="text-sm text-softMuted leading-relaxed pt-2">
+              David is a Munich-based jazz vocalist whose style blends the elegance of classic crooners with the energy and immediacy of contemporary live performance. As a vocalist with a Munich big band, he has developed his sound through regular work with full horn sections, rhythm section and ensemble arrangements, performing repertoire associated with Frank Sinatra, Nat King Cole, Michael Bublé and the modern swing tradition.
+            </p>
+            <p class="text-sm text-softMuted leading-relaxed">
+              His approach is centered on storytelling, rhythmic phrasing and a warm, resonant male vocal sound. Rather than treating the American Songbook as museum repertoire, David is interested in making standards feel direct, personal and alive for contemporary audiences.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div id="repertoire" class="relative z-10 reveal delay-200">
+        <h2 class="text-2xl font-serif text-slateGold mb-6 uppercase tracking-widest">Repertoire</h2>
+        <div class="flex flex-col sm:flex-row gap-4">
+          
+          <div class="flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex items-center gap-4 hover:border-slateGold/50 transition-colors cursor-pointer group">
+            <div class="w-10 h-10 rounded-full bg-slateGold flex items-center justify-center text-midnight group-hover:scale-110 transition-transform">
+              <span class="ml-1 font-bold">▶</span>
+            </div>
+            <div>
+              <h4 class="text-white font-medium text-sm">Feeling Good / Cry Me a River</h4>
+              <p class="text-xs text-softMuted">(Big Band Swing)</p>
+            </div>
+          </div>
+
+          <div class="flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex items-center gap-4 hover:border-slateGold/50 transition-colors cursor-pointer group">
+            <div class="w-10 h-10 rounded-full bg-slateGold flex items-center justify-center text-midnight group-hover:scale-110 transition-transform">
+              <span class="ml-1 font-bold">▶</span>
+            </div>
+            <div>
+              <h4 class="text-white font-medium text-sm">Haven't Met You Yet</h4>
+              <p class="text-xs text-softMuted">(Pop-Jazz Crossover)</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full lg:w-1/2 px-6 lg:px-12 py-16 bg-midnight">
+      
+      <div id="media" class="flex flex-col sm:flex-row justify-between items-baseline mb-8 reveal">
+        <h2 class="text-2xl font-serif text-slateGold uppercase tracking-widest">Media Gallery</h2>
+        <div class="text-right mt-2 sm:mt-0">
+          <span class="text-[10px] uppercase tracking-widest text-slateGold font-semibold block">In Performance</span>
+          <h3 class="text-2xl font-serif text-white">Gallery & Shows</h3>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-24 reveal delay-100">
+        <div class="aspect-[4/3] rounded-lg overflow-hidden border border-white/10 group cursor-pointer bg-navyCard/30">
+          <img src="IMG_1603.jpg" alt="Live Performance Close" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="aspect-[4/3] rounded-lg overflow-hidden border border-white/10 group cursor-pointer bg-navyCard/30">
+          <img src="ESME Summer Concert 2026_07_05-446.jpg" alt="Big Band Stage Wide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="aspect-[4/3] rounded-lg overflow-hidden border border-white/10 group cursor-pointer bg-navyCard/30">
+          <img src="ESME Summer Concert 2026_07_05-373.jpg" alt="Vocal Performance Mid" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+        <div class="aspect-[4/3] rounded-lg overflow-hidden border border-white/10 group cursor-pointer bg-navyCard/30">
+          <img src="ESME Summer Concert 2026_07_05-35.jpg" alt="Vocal and Saxophone" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+        </div>
+      </div>
+
+      <div class="flex flex-col xl:flex-row gap-12 xl:gap-8 reveal delay-200">
+        
+        <div id="shows" class="flex-1">
+          <h2 class="text-2xl font-serif text-slateGold mb-6 uppercase tracking-widest">Live Shows</h2>
+          
+          <div class="space-y-6">
+            <div class="border-b border-white/10 pb-4">
+              <h4 class="text-xl font-serif text-white">Munich, 25</h4>
+              <p class="text-xs text-softMuted mt-1">Monday, 11th - 10am - Munich</p>
+            </div>
+            
+            <div class="border-b border-white/10 pb-4">
+              <h4 class="text-xl font-serif text-white">Vienna, Aug 27</h4>
+              <p class="text-xs text-softMuted mt-1">Monday 18th - Munich<br/>Thursday, 10am - Munich</p>
+            </div>
+            
+            <div class="border-b border-white/10 pb-4">
+              <h4 class="text-xl font-serif text-white">Vienna, Aug 23</h4>
+              <p class="text-xs text-softMuted mt-1">Monday 18th - Vienna</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="contact" class="flex-1">
+          <div class="border border-slateGold/40 rounded-xl p-6 bg-navyCard/30 relative">
+            <h2 class="text-2xl font-serif text-slateGold mb-6 uppercase tracking-widest text-center">Book David Eagle</h2>
+            
+            <form class="space-y-4">
+              <div class="flex gap-4">
+                <input type="text" placeholder="Name" class="w-1/2 bg-transparent border border-white/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-slateGold transition-colors placeholder:text-softMuted/50" />
+                <input type="text" placeholder="Last" class="w-1/2 bg-transparent border border-white/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-slateGold transition-colors placeholder:text-softMuted/50" />
+              </div>
+              <input type="email" placeholder="Email" class="w-full bg-transparent border border-white/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-slateGold transition-colors placeholder:text-softMuted/50" />
+              <textarea rows="3" placeholder="Message" class="w-full bg-transparent border border-white/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-slateGold transition-colors placeholder:text-softMuted/50"></textarea>
+              <button type="button" class="w-full py-3 bg-slateGold text-midnight font-medium rounded hover:bg-warmGold transition-colors text-sm uppercase tracking-wider">
+                Send Inquiry
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { root: null, threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+    });
+  </script>
+
+</body>
+</html>
