@@ -1,3 +1,10 @@
+The reason the web page stopped loading entirely is due to a small but critical syntax error that was introduced in the `<head>` section of the code you provided.
+
+Right below the Tailwind configuration, the closing `<script>` tag was accidentally modified to `</>`. This incomplete tag breaks the browser's HTML parser, causing the entire page to fail to render.
+
+Here is the corrected code. I have fixed the broken script tag and maintained all the audio logic and structural changes we made previously.
+
+```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -32,7 +39,7 @@
         }
       }
     }
-  </>
+  </script>
 
   <style>
     /* Custom Animations & UI Enhancements */
@@ -247,14 +254,14 @@
           }
         });
       }, { root: null, threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
-  
+
       revealElements.forEach(el => revealObserver.observe(el));
-  
+
       // Native Audio HMI Logic with Error Catching
       const audioPlayer = document.getElementById('native-audio-player');
       const trackBtns = document.querySelectorAll('.track-btn');
       let currentAudioSrc = null;
-  
+
       function updateIcons() {
         trackBtns.forEach(btn => {
           const src = btn.getAttribute('data-audio-src');
@@ -269,11 +276,11 @@
           }
         });
       }
-  
+
       audioPlayer.addEventListener('play', updateIcons);
       audioPlayer.addEventListener('pause', updateIcons);
       audioPlayer.addEventListener('ended', updateIcons);
-  
+
       // This function attempts to play the audio and catches any browser errors
       function playAudioSecurely() {
         const playPromise = audioPlayer.play();
@@ -293,7 +300,7 @@
           });
         }
       }
-  
+
       trackBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           const src = btn.getAttribute('data-audio-src');
@@ -316,3 +323,5 @@
 
 </body>
 </html>
+
+```
