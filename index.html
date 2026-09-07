@@ -1,10 +1,3 @@
-The reason the web page stopped loading entirely is due to a small but critical syntax error that was introduced in the `<head>` section of the code you provided.
-
-Right below the Tailwind configuration, the closing `<script>` tag was accidentally modified to `</>`. This incomplete tag breaks the browser's HTML parser, causing the entire page to fail to render.
-
-Here is the corrected code. I have fixed the broken script tag and maintained all the audio logic and structural changes we made previously.
-
-```html
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -143,25 +136,23 @@ Here is the corrected code. I have fixed the broken script tag and maintained al
         <h2 class="text-2xl font-serif text-slateGold mb-6 uppercase tracking-widest">Repertoire</h2>
         <div class="flex flex-col sm:flex-row gap-4">
           
-          <!-- Track 1 Button -->
-          <div class="track-btn flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex items-center gap-4 hover:border-slateGold/50 transition-colors cursor-pointer group" data-audio-src="aslongas.mp3">
+          <div class="flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex items-center gap-4 hover:border-slateGold/50 transition-colors cursor-pointer group">
             <div class="w-10 h-10 rounded-full bg-slateGold flex items-center justify-center text-midnight group-hover:scale-110 transition-transform">
-              <span class="play-icon ml-1 font-bold">▶</span>
+              <span class="ml-1 font-bold">▶</span>
             </div>
             <div>
-              <h4 class="text-white font-medium text-sm">As long as I am singing</h4>
+              <h4 class="text-white font-medium text-sm">Feeling Good / Cry Me a River</h4>
               <p class="text-xs text-softMuted">(Big Band Swing)</p>
             </div>
           </div>
 
-          <!-- Track 2 Button -->
-          <div class="track-btn flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex items-center gap-4 hover:border-slateGold/50 transition-colors cursor-pointer group" data-audio-src="isntshelovely.mp3">
+          <div class="flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex items-center gap-4 hover:border-slateGold/50 transition-colors cursor-pointer group">
             <div class="w-10 h-10 rounded-full bg-slateGold flex items-center justify-center text-midnight group-hover:scale-110 transition-transform">
-              <span class="play-icon ml-1 font-bold">▶</span>
+              <span class="ml-1 font-bold">▶</span>
             </div>
             <div>
-              <h4 class="text-white font-medium text-sm">Isn't she lovely</h4>
-              <p class="text-xs text-softMuted">Pop-Jazz crossover</p>
+              <h4 class="text-white font-medium text-sm">Haven't Met You Yet</h4>
+              <p class="text-xs text-softMuted">(Pop-Jazz Crossover)</p>
             </div>
           </div>
 
@@ -239,12 +230,8 @@ Here is the corrected code. I have fixed the broken script tag and maintained al
     </div>
   </main>
 
-  <!-- Hidden Native Audio Player -->
-  <audio id="native-audio-player" preload="none"></audio>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Intersection Observer for Animations
       const revealElements = document.querySelectorAll('.reveal');
       const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -256,72 +243,8 @@ Here is the corrected code. I have fixed the broken script tag and maintained al
       }, { root: null, threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
 
       revealElements.forEach(el => revealObserver.observe(el));
-
-      // Native Audio HMI Logic with Error Catching
-      const audioPlayer = document.getElementById('native-audio-player');
-      const trackBtns = document.querySelectorAll('.track-btn');
-      let currentAudioSrc = null;
-
-      function updateIcons() {
-        trackBtns.forEach(btn => {
-          const src = btn.getAttribute('data-audio-src');
-          const icon = btn.querySelector('.play-icon');
-          
-          if (src === currentAudioSrc && !audioPlayer.paused) {
-            icon.textContent = '⏸'; 
-            icon.classList.remove('ml-1'); 
-          } else {
-            icon.textContent = '▶'; 
-            icon.classList.add('ml-1');
-          }
-        });
-      }
-
-      audioPlayer.addEventListener('play', updateIcons);
-      audioPlayer.addEventListener('pause', updateIcons);
-      audioPlayer.addEventListener('ended', updateIcons);
-
-      // This function attempts to play the audio and catches any browser errors
-      function playAudioSecurely() {
-        const playPromise = audioPlayer.play();
-        
-        if (playPromise !== undefined) {
-          playPromise.then(_ => {
-            // Playback started successfully
-            console.log("Audio is playing!");
-          })
-          .catch(error => {
-            // Playback failed! Show the user exactly why.
-            alert("Browser blocked playback. Error: " + error.message);
-            console.error("Playback error:", error);
-            
-            // Reset icons since it failed
-            updateIcons();
-          });
-        }
-      }
-
-      trackBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const src = btn.getAttribute('data-audio-src');
-          
-          if (src === currentAudioSrc) {
-            if (audioPlayer.paused) {
-              playAudioSecurely();
-            } else {
-              audioPlayer.pause();
-            }
-          } else {
-            currentAudioSrc = src;
-            audioPlayer.src = src;
-            playAudioSecurely();
-          }
-        });
-      });
     });
   </script>
 
 </body>
 </html>
-
-```
