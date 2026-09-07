@@ -32,7 +32,7 @@
         }
       }
     }
-  </script>
+  </>
 
   <style>
     /* Custom Animations & UI Enhancements */
@@ -237,6 +237,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Intersection Observer for Animations
       const revealElements = document.querySelectorAll('.reveal');
       const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -246,15 +247,14 @@
           }
         });
       }, { root: null, threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
-
+  
       revealElements.forEach(el => revealObserver.observe(el));
-
-      // Native Audio HMI Logic
+  
+      // Native Audio HMI Logic with Error Catching
       const audioPlayer = document.getElementById('native-audio-player');
       const trackBtns = document.querySelectorAll('.track-btn');
-      
       let currentAudioSrc = null;
-
+  
       function updateIcons() {
         trackBtns.forEach(btn => {
           const src = btn.getAttribute('data-audio-src');
@@ -269,25 +269,45 @@
           }
         });
       }
-
+  
       audioPlayer.addEventListener('play', updateIcons);
       audioPlayer.addEventListener('pause', updateIcons);
       audioPlayer.addEventListener('ended', updateIcons);
-
+  
+      // This function attempts to play the audio and catches any browser errors
+      function playAudioSecurely() {
+        const playPromise = audioPlayer.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(_ => {
+            // Playback started successfully
+            console.log("Audio is playing!");
+          })
+          .catch(error => {
+            // Playback failed! Show the user exactly why.
+            alert("Browser blocked playback. Error: " + error.message);
+            console.error("Playback error:", error);
+            
+            // Reset icons since it failed
+            updateIcons();
+          });
+        }
+      }
+  
       trackBtns.forEach(btn => {
         btn.addEventListener('click', () => {
           const src = btn.getAttribute('data-audio-src');
           
           if (src === currentAudioSrc) {
             if (audioPlayer.paused) {
-              audioPlayer.play();
+              playAudioSecurely();
             } else {
               audioPlayer.pause();
             }
           } else {
             currentAudioSrc = src;
             audioPlayer.src = src;
-            audioPlayer.play();
+            playAudioSecurely();
           }
         });
       });
