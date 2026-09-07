@@ -1,3 +1,5 @@
+Here is the updated code. I have modified the Repertoire section to use native HTML5 <audio> players.
+The players are styled to fit seamlessly into the cards. To make them work on your live GitHub site, you just need to change "feeling-good.mp3" and "havent-met-you-yet.mp3" in the code below to match the exact, case-sensitive filenames of the audio tracks you upload to your repository.
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -61,6 +63,15 @@
     }
     .delay-100 { transition-delay: 100ms; }
     .delay-200 { transition-delay: 200ms; }
+    
+    /* Styling for the native audio player to blend slightly better */
+    audio {
+      height: 40px;
+      outline: none;
+    }
+    audio::-webkit-media-controls-panel {
+      background-color: #94a3b8; /* Matches the softMuted color */
+    }
   </style>
 </head>
 <body class="bg-midnight text-slate-100 font-sans antialiased selection:bg-slateGold selection:text-midnight">
@@ -136,24 +147,30 @@
         <h2 class="text-2xl font-serif text-slateGold mb-6 uppercase tracking-widest">Repertoire</h2>
         <div class="flex flex-col sm:flex-row gap-4">
           
-          <div class="flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex items-center gap-4 hover:border-slateGold/50 transition-colors cursor-pointer group">
-            <div class="w-10 h-10 rounded-full bg-slateGold flex items-center justify-center text-midnight group-hover:scale-110 transition-transform">
-              <span class="ml-1 font-bold">▶</span>
-            </div>
+          <!-- Audio Card 1 -->
+          <div class="flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex flex-col justify-between gap-3 hover:border-slateGold/50 transition-colors group">
             <div>
               <h4 class="text-white font-medium text-sm">Feeling Good / Cry Me a River</h4>
-              <p class="text-xs text-softMuted">(Big Band Swing)</p>
+              <p class="text-xs text-softMuted mb-2">(Big Band Swing)</p>
             </div>
+            <audio controls class="w-full">
+              <!-- Change "feeling-good.mp3" to your exact file name -->
+              <source src="feeling-good.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
           </div>
 
-          <div class="flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex items-center gap-4 hover:border-slateGold/50 transition-colors cursor-pointer group">
-            <div class="w-10 h-10 rounded-full bg-slateGold flex items-center justify-center text-midnight group-hover:scale-110 transition-transform">
-              <span class="ml-1 font-bold">▶</span>
-            </div>
+          <!-- Audio Card 2 -->
+          <div class="flex-1 bg-navyCard/60 border border-white/10 rounded-lg p-4 flex flex-col justify-between gap-3 hover:border-slateGold/50 transition-colors group">
             <div>
               <h4 class="text-white font-medium text-sm">Haven't Met You Yet</h4>
-              <p class="text-xs text-softMuted">(Pop-Jazz Crossover)</p>
+              <p class="text-xs text-softMuted mb-2">(Pop-Jazz Crossover)</p>
             </div>
+            <audio controls class="w-full">
+              <!-- Change "havent-met-you-yet.mp3" to your exact file name -->
+              <source src="isntshelovely.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
           </div>
 
         </div>
@@ -248,3 +265,4 @@
 
 </body>
 </html>
+
