@@ -62,17 +62,13 @@
     .delay-100 { transition-delay: 100ms; }
     .delay-200 { transition-delay: 200ms; }
     
-    /* Styling for the native audio & video players to blend slightly better */
+    /* Styling for the native audio player to blend slightly better */
     audio {
       height: 40px;
       outline: none;
     }
     audio::-webkit-media-controls-panel {
       background-color: #94a3b8; /* Matches the softMuted color */
-    }
-    video {
-      outline: none;
-      border-radius: 0.5rem;
     }
   </style>
 </head>
@@ -200,15 +196,6 @@
           <span class="text-[10px] uppercase tracking-widest text-slateGold font-semibold block">In Performance</span>
           <h3 class="text-2xl font-serif text-white">Gallery & Shows</h3>
         </div>
-      </div>
-
-      <!-- NEW VIDEO PLAYER SECTION -->
-      <div class="mb-6 reveal delay-100 rounded-lg overflow-hidden border border-white/10 bg-navyCard/30 shadow-lg group">
-        <video controls preload="metadata" class="w-full h-auto">
-          <!-- Change "performance.mp4" to your exact video file name -->
-          <source src="performance.mp4" type="video/mp4">
-          Your browser does not support the video element.
-        </video>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-24 reveal delay-200">
